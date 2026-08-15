@@ -27,7 +27,7 @@ pip install -r requirements.txt
 ```
 
 ```bash
-cd ediaristas_workshop && python manage.py migrate && python manage.py runserver
+python manage.py migrate && python manage.py runserver
 ```
 
 Aplicação:

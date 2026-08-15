@@ -65,7 +65,7 @@ Exemplo de resposta:
 
 | Verificação | Resultado Esperado |
 | --- | --- |
-| Container `treina_web_backend-api-1` | `Up` na porta 8000 |
+| Container `e-diaristas-python-api` | `Up` na porta 8000 |
 | `GET /api/diaristas-cidade?cep=45055485` | HTTP `200` com 4 diaristas |
 | `GET /api/diaristas-cidade?cep=01001000` | HTTP `200` com lista vazia |
 | CEP inválido (menos de 8 dígitos) | Erro de validação da ViaCEP |
@@ -80,7 +80,7 @@ curl -s "http://localhost:8000/api/diaristas-cidade?cep=45055485"
 
 ## 5. Carregar Dados de Teste
 
-O banco **já vem populado** no arquivo `ediaristas_workshop/db.sqlite3`, versionado no repositório e montado como volume.
+O banco **já vem populado** no arquivo `db.sqlite3`, versionado no repositório e montado como volume.
 
 Para aplicar as migrations em um banco novo:
 

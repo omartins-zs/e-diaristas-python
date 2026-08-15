@@ -9,8 +9,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
-# O projeto Django (manage.py) fica dentro da pasta ediaristas_workshop/
-COPY ediaristas_workshop/ ./
+COPY . ./
 
 EXPOSE 8000
 

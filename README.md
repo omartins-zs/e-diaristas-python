@@ -113,7 +113,7 @@ pip install -r requirements.txt
 ```
 
 ```bash
-cd ediaristas_workshop && python manage.py runserver
+python manage.py runserver
 ```
 
 > ⚠️ Guia completo em [docs/COMO_EXECUTAR.md](docs/COMO_EXECUTAR.md).
@@ -149,22 +149,21 @@ curl "http://localhost:8000/api/diaristas-cidade?cep=45055485"
 ## 🧱 Estrutura do Projeto
 
 ```
-├── ediaristas_workshop/          # 🎯 projeto Django
-│   ├── api/                      # 🔌 API REST
-│   │   ├── pagination/
-│   │   ├── serializer/
-│   │   ├── service/              # 🧠 regra da busca por cidade
-│   │   ├── urls.py
-│   │   └── views.py
-│   ├── web/                      # 📝 cadastro de diaristas
-│   │   ├── forms/
-│   │   ├── services/             # 🌐 integração com a ViaCEP
-│   │   └── models.py
-│   ├── ediaristas_workshop/      # ⚙️ settings e urls
-│   ├── media/                    # 🖼️ fotos enviadas
-│   ├── db.sqlite3                # 🗄️ banco com dados de exemplo
-│   └── manage.py
+├── api/                          # 🔌 API REST
+│   ├── pagination/
+│   ├── serializer/
+│   ├── service/                  # 🧠 regra da busca por cidade
+│   ├── urls.py
+│   └── views.py
+├── web/                          # 📝 cadastro de diaristas
+│   ├── forms/
+│   ├── services/                 # 🌐 integração com a ViaCEP
+│   └── models.py
+├── ediaristas_workshop/          # ⚙️ settings, urls e wsgi
+├── media/                        # 🖼️ fotos enviadas
 ├── docs/                         # 📚 execução e dados de teste
+├── db.sqlite3                    # 🗄️ banco com dados de exemplo
+├── manage.py                     # 🎯 CLI do Django
 ├── Dockerfile                    # 🐳 imagem da API
 ├── docker-compose.yml            # 🐳 orquestração
 └── requirements.txt              # 📦 dependências

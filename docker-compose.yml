@@ -1,6 +1,10 @@
+name: e-diaristas-python
+
 services:
   api:
     build: .
+    image: e-diaristas-python:latest
+    container_name: e-diaristas-python-api
     ports:
       - "${APP_PORT:-8000}:8000"
     environment:
@@ -10,6 +14,6 @@ services:
     volumes:
       # Mantem o banco SQLite e as fotos enviadas fora da imagem,
       # preservando os dados entre rebuilds.
-      - ./ediaristas_workshop/db.sqlite3:/app/db.sqlite3
-      - ./ediaristas_workshop/media:/app/media
+      - ./db.sqlite3:/app/db.sqlite3
+      - ./media:/app/media
     restart: unless-stopped

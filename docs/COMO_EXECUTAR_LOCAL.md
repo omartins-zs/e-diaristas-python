@@ -44,7 +44,7 @@ pip --version
 ### 1.1 Acessar o projeto
 
 ```bash
-cd c:/Projetos/Treina_Web_BackEnd
+cd c:/Projetos/e-diaristas-python
 ```
 
 ### 1.2 Copiar variáveis de ambiente
@@ -91,11 +91,7 @@ pip install -r requirements.txt
 
 ## 3) Banco de dados
 
-O arquivo `ediaristas_workshop/db.sqlite3` já vem versionado **com dados de exemplo**. Para garantir que as migrations estão aplicadas:
-
-```bash
-cd ediaristas_workshop
-```
+O arquivo `db.sqlite3` já vem versionado **com dados de exemplo**. Para garantir que as migrations estão aplicadas:
 
 ```bash
 python manage.py migrate

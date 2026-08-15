@@ -6,9 +6,12 @@ Guia para executar a API utilizando Docker Desktop.
 
 ## Stack e containers
 
-| Container | Função | Porta |
-| --- | --- | --- |
-| api | Django com o servidor de desenvolvimento | 8000 |
+| Serviço | Container | Função | Porta |
+| --- | --- | --- | --- |
+| api | `e-diaristas-python-api` | Django com o servidor de desenvolvimento | 8000 |
+
+> O projeto Compose se chama **`e-diaristas-python`** (chave `name:` no `docker-compose.yml`), então o prefixo dos containers não depende do nome da pasta.
+> Nos comandos `docker compose exec` use o **nome do serviço** (`api`); em comandos `docker` puros use o **nome do container** (`e-diaristas-python-api`).
 
 > O banco é **SQLite** (arquivo no próprio projeto), portanto não há container de banco de dados, cache, filas ou administração.
 
@@ -104,8 +107,8 @@ O banco SQLite e a pasta de fotos são montados como volume:
 
 ```yaml
 volumes:
-  - ./ediaristas_workshop/db.sqlite3:/app/db.sqlite3
-  - ./ediaristas_workshop/media:/app/media
+  - ./db.sqlite3:/app/db.sqlite3
+  - ./media:/app/media
 ```
 
 Ou seja, **as diaristas cadastradas e as fotos enviadas sobrevivem a rebuilds** da imagem.
