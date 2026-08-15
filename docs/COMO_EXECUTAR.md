@@ -69,7 +69,7 @@ CEPs de teste validados estão em [ACESSOS_TESTES.md](ACESSOS_TESTES.md).
 | Área | Local | Docker |
 | --- | --- | --- |
 | API — busca por CEP | http://127.0.0.1:8000/api/diaristas-cidade?cep=45055485 | http://localhost:8000/api/diaristas-cidade?cep=45055485 |
-| Cadastro de diaristas | http://127.0.0.1:8000/web/ | http://localhost:8000/web/ |
+| Cadastro de diaristas | http://127.0.0.1:8000/web/listar_diaristas | http://localhost:8000/web/listar_diaristas |
 | Admin do Django | http://127.0.0.1:8000/admin/ | http://localhost:8000/admin/ |
 | Fotos enviadas | http://127.0.0.1:8000/media/ | http://localhost:8000/media/ |
 

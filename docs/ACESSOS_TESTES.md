@@ -57,7 +57,7 @@ Exemplo de resposta:
 | Item | Link (Docker e Local) |
 | --- | --- |
 | API — busca por CEP | `http://localhost:8000/api/diaristas-cidade?cep=45055485` |
-| Cadastro de diaristas | `http://localhost:8000/web/` |
+| Cadastro de diaristas | `http://localhost:8000/web/listar_diaristas` |
 | Admin do Django | `http://localhost:8000/admin/` |
 | Fotos enviadas | `http://localhost:8000/media/images.jpg` |
 
@@ -88,7 +88,7 @@ Para aplicar as migrations em um banco novo:
 docker compose exec api python manage.py migrate
 ```
 
-Novas diaristas podem ser cadastradas pela interface web em `http://localhost:8000/web/`.
+Novas diaristas podem ser cadastradas pela interface web em `http://localhost:8000/web/listar_diaristas`.
 
 ---
 

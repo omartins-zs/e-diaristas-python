@@ -134,7 +134,7 @@ Este projeto **não possui filas, workers ou scheduler**. Toda a resposta é ger
 | Recurso | URL |
 | --- | --- |
 | API — busca por CEP | http://127.0.0.1:8000/api/diaristas-cidade?cep=45055485 |
-| Cadastro de diaristas | http://127.0.0.1:8000/web/ |
+| Cadastro de diaristas | http://127.0.0.1:8000/web/listar_diaristas |
 | Admin do Django | http://127.0.0.1:8000/admin/ |
 
 ### Credenciais de teste

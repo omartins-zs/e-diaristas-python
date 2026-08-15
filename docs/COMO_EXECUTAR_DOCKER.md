@@ -73,7 +73,7 @@ docker compose exec api python manage.py createsuperuser
 | Recurso | URL |
 | --- | --- |
 | API — busca por CEP | http://localhost:8000/api/diaristas-cidade?cep=45055485 |
-| Cadastro de diaristas | http://localhost:8000/web/ |
+| Cadastro de diaristas | http://localhost:8000/web/listar_diaristas |
 | Admin do Django | http://localhost:8000/admin/ |
 | Fotos enviadas | http://localhost:8000/media/images.jpg |
 
