@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-django-insecure-1%%#*(2s&_4c3*^56xiy%68bipuaqax%7#a2b^2kp=)_q+4gf8}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-True}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,[::1]}
+    volumes:
+      # Mantem o banco SQLite e as fotos enviadas fora da imagem,
+      # preservando os dados entre rebuilds.
+      - ./ediaristas_workshop/db.sqlite3:/app/db.sqlite3
+      - ./ediaristas_workshop/media:/app/media
+    restart: unless-stopped
