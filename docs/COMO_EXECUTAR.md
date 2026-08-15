@@ -4,14 +4,39 @@ Escolha **um** guia conforme seu ambiente:
 
 | Guia | Quando usar | Requisitos no PC |
 | --- | --- | --- |
-| **[Docker](#docker)** | Executar em qualquer máquina | Docker Desktop |
-| **[Local](#local)** | Desenvolver com o venv | Python 3.9+ |
+| **[COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md)** | Executar em qualquer máquina com containers | Docker Desktop |
+| **[COMO_EXECUTAR_LOCAL.md](COMO_EXECUTAR_LOCAL.md)** | Desenvolver com venv e o servidor do Django | Python 3.9+ |
+| [ACESSOS_TESTES.md](ACESSOS_TESTES.md) | CEPs de teste, URLs e fluxos | — |
 
-> API REST do workshop e-diaristas. Expõe a busca de diaristas por CEP consumida pelo front-end.
+> API REST do workshop e-diaristas. Não possui autenticação: os endpoints são públicos.
 
 ---
 
-## Docker
+## Início rápido
+
+### Local
+
+Ative o bloco `LOCAL` no `.env` e execute:
+
+```bash
+cp .env.example .env
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+cd ediaristas_workshop && python manage.py migrate && python manage.py runserver
+```
+
+Aplicação:
+
+http://127.0.0.1:8000
+
+### Docker
+
+Ative o bloco `DOCKER` no `.env` e execute:
 
 ```bash
 cp .env.example .env
@@ -21,83 +46,37 @@ cp .env.example .env
 docker compose up -d --build
 ```
 
-API:
+Aplicação:
 
-http://localhost:8000/api/diaristas-cidade?cep=88060455
-
-Para parar:
-
-```bash
-docker compose down
-```
+http://localhost:8000
 
 ---
 
-## Local
+## Logins demo
+
+O `/admin/` do Django **não possui usuários cadastrados** e a API é pública. Para criar um superusuário:
 
 ```bash
-python -m venv venv
+docker compose exec api python manage.py createsuperuser
 ```
 
-Windows:
-
-```powershell
-venv\Scripts\activate
-```
-
-Linux e Mac:
-
-```bash
-source venv/bin/activate
-```
-
-```bash
-pip install -r requirements.txt
-```
-
-```bash
-cd ediaristas_workshop
-```
-
-```bash
-python manage.py migrate
-```
-
-```bash
-python manage.py runserver
-```
-
-API:
-
-http://127.0.0.1:8000/api/diaristas-cidade?cep=88060455
+CEPs de teste validados estão em [ACESSOS_TESTES.md](ACESSOS_TESTES.md).
 
 ---
 
-## Endpoints
+## URLs principais
 
-| Método | Rota | Descrição |
+| Área | Local | Docker |
 | --- | --- | --- |
-| GET | `/api/diaristas-cidade?cep={cep}` | Lista diaristas que atendem a cidade do CEP |
-| — | `/web/` | Cadastro de diaristas (interface web) |
-| — | `/admin/` | Admin do Django |
-| — | `/media/{arquivo}` | Fotos enviadas |
+| API — busca por CEP | http://127.0.0.1:8000/api/diaristas-cidade?cep=45055485 | http://localhost:8000/api/diaristas-cidade?cep=45055485 |
+| Cadastro de diaristas | http://127.0.0.1:8000/web/ | http://localhost:8000/web/ |
+| Admin do Django | http://127.0.0.1:8000/admin/ | http://localhost:8000/admin/ |
+| Fotos enviadas | http://127.0.0.1:8000/media/ | http://localhost:8000/media/ |
 
 ---
 
-## Variáveis de ambiente
+## Outros documentos
 
-| Variável | Padrão | Descrição |
-| --- | --- | --- |
-| `APP_PORT` | `8000` | Porta publicada no seu computador |
-| `DJANGO_DEBUG` | `True` | Modo debug |
-| `DJANGO_ALLOWED_HOSTS` | `localhost,127.0.0.1,[::1]` | Hosts autorizados |
-| `DJANGO_SECRET_KEY` | chave de desenvolvimento | Chave da aplicação |
-
----
-
-## Observações
-
-- O container usa o **servidor de desenvolvimento do Django**, pois é ele quem serve as fotos em `/media/` e o admin (o `urls.py` publica a media apenas com `DEBUG=True`). Para produção, seria necessário Gunicorn + Nginx servindo `static/` e `media/`.
-- A busca por CEP consulta a **API pública ViaCEP**, portanto o container precisa de acesso à internet.
-- O banco é **SQLite** e já vem com dados de exemplo. O arquivo `db.sqlite3` e a pasta `media/` são montados como volume, então os dados sobrevivem a rebuilds.
-- Dados de teste e CEPs válidos: [ACESSOS_TESTES.md](ACESSOS_TESTES.md)
+- [COMO_EXECUTAR_LOCAL.md](COMO_EXECUTAR_LOCAL.md) — Execução com venv
+- [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md) — Execução com containers
+- [ACESSOS_TESTES.md](ACESSOS_TESTES.md) — CEPs de teste e validação
